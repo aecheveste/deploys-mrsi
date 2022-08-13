@@ -11,13 +11,13 @@ services:
       - 443:443
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-#se agrega portal
+
   portal:
     image: nginx
     container_name: Portal
     restart: always
     environment:
-      - VIRTUAL_HOST=portal.midominio.com
+      - VIRTUAL_HOST=portal-aecheveste.sytes.net
     volumes:
       - /storage/volumes/nginx/portal:/usr/share/nginx/html:ro
 
