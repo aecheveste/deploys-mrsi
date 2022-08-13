@@ -30,5 +30,5 @@ services:
     volumes:
       - /storage/volumes/apache/erp:/usr/local/apache2/htdocs
       - /volumes/nginx/certs:/etc/nginx/certs:ro
-     - /volumes/nginx/vhostd:/etc/nginx/vhost.d
-     - /volumes/nginx/config/settings.conf:/etc/nginx/conf.d/custom_settings.conf:ro
+      - /volumes/nginx/vhostd:/etc/nginx/vhost.d
+      - /volumes/nginx/config/settings.conf:/etc/nginx/conf.d/custom_settings.conf:ro
