@@ -14,7 +14,7 @@ services:
 
   portal:
     image: nginx
-    container_name: Portal
+    container_name: Portal1
     restart: always
     environment:
       - VIRTUAL_HOST=portal-aecheveste.sytes.net
