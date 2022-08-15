@@ -14,11 +14,13 @@ services:
 
   portal:
     image: nginx
-    container_name: Portal1
+    container_name: Portal
     restart: always
     environment:
       - VIRTUAL_HOST=portal-aecheveste.sytes.net
     volumes:
+
+    git
       - /storage/volumes/nginx/portal:/usr/share/nginx/html:ro
 
   erp:
