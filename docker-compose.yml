@@ -19,7 +19,7 @@ services:
     environment:
       - VIRTUAL_HOST=portal-aecheveste.sytes.net
     volumes:
-      -/volumes/www/nginx/portal:/usr/share/nginx/html:ro
+      -/volumes/www/portal:/usr/share/nginx/html:ro
 
   erp:
     image: httpd
@@ -28,7 +28,7 @@ services:
     environment:
       - VIRTUAL_HOST=erp.midominio.com
     volumes:
-      - /volumes/www/:/usr/local/apache2/htdocs
+      - /volumes/www/erp:/usr/local/apache2/htdocs
       - /volumes/nginx/certs:/etc/nginx/certs:ro
       - /volumes/nginx/vhostd:/etc/nginx/vhost.d
       - /volumes/nginx/config/settings.conf:/etc/nginx/conf.d/custom_settings.conf:ro
