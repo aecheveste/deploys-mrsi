@@ -24,7 +24,7 @@ services:
     #environment:
      # - VIRTUAL_HOST=portal-aecheveste.sytes.net
     volumes:
-      -/volumes/www/portal:/usr/share/nginx/html:ro
+      - /volumes/www/portal:/usr/share/nginx/html:ro
 
   erp:
     image: httpd
