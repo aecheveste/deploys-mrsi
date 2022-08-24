@@ -37,7 +37,7 @@ services:
 
   factura:
     image: nginx
-    container_name: factura
+    container_name: Factura
     restart: always
     #environment:
      # - VIRTUAL_HOST=portal-aecheveste.sytes.net
