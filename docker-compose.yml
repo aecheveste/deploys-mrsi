@@ -34,3 +34,12 @@ services:
      # - VIRTUAL_HOST=erp.midominio.com
     volumes:
       - /volumes/www/erp:/usr/local/apache2/htdocs
+
+  factura:
+    image: nginx
+    container_name: factura
+    restart: always
+    #environment:
+     # - VIRTUAL_HOST=portal-aecheveste.sytes.net
+    volumes:
+      - /volumes/www/factura:/usr/share/nginx/html:ro
