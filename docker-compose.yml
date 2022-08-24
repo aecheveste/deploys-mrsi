@@ -23,7 +23,6 @@ services:
     environment:
       - VIRTUAL_HOST=portal-aecheveste.sytes.net
       - VIRTUAL_PATH=/
-      - VIRTUAL_DEST/
     volumes:
       - /volumes/www/portal:/usr/share/nginx/html:ro
 
