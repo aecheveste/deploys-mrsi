@@ -9,8 +9,6 @@ services:
     ports:
       - 80:80
       - 443:443
-    #environment:
-      #- VIRTUAL_HOST=portal-aecheveste.sytes.net
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /volumes/nginx/certs:/etc/nginx/certs:ro
@@ -33,7 +31,7 @@ services:
     environment:
      - VIRTUAL_HOST=portal-aecheveste.sytes.net
      - VIRTUAL_PATH=/erp
-     - VIRTUAL_DEST/
+     - VIRTUAL_DEST=/
     volumes:
       - /volumes/www/erp:/usr/local/apache2/htdocs
 
@@ -44,6 +42,6 @@ services:
     environment:
      - VIRTUAL_HOST=portal-aecheveste.sytes.net
      - VIRTUAL_PATH=/factura
-     - VIRTUAL_DEST/
+     - VIRTUAL_DEST=/
     volumes:
       - /volumes/www/factura:/usr/share/nginx/html:ro
