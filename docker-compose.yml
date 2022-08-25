@@ -9,10 +9,26 @@ services:
     ports:
       - 80:80
       - 443:443
+    environment:
+      - VIRTUAL_HOST=portal-aecheveste.sytes.net
+      - VIRTUAL_PATH=/.well-known
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /volumes/nginx/certs:/etc/nginx/certs:ro
+      - /volumes/nginx/html:/usr/share/nginx/html:rw
       - /volumes/nginx/vhostd:/etc/nginx/vhost.d
+    
+  letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name: 'Lets-Encrypt'
+    restart: always
+    environment:
+      - NGINX_PROXY_CONTAINER=Reverse-Proxy
+    volumes:
+      - /volumes/nginx/certs:/etc/nginx/certs
+      - /volumes/nginx/vhostd:/etc/nginx/vhost.d
+      - /volumes/nginx/html:/usr/share/nginx/html:rw
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 
   portal:
     image: nginx
@@ -21,6 +37,8 @@ services:
     environment:
       - VIRTUAL_HOST=portal-aecheveste.sytes.net
       - VIRTUAL_PATH=/
+      - LETSENCRYPT_HOST=portal-aecheveste.sytes.net
+      - LETSENCRYPT_EMAIL=elizabeth.echeveste.c@gmail.com 
     volumes:
       - /volumes/www/portal:/usr/share/nginx/html:ro
 
@@ -29,9 +47,11 @@ services:
     #container_name: ERP
     restart: always
     environment:
-     - VIRTUAL_HOST=portal-aecheveste.sytes.net
-     - VIRTUAL_PATH=/erp
-     - VIRTUAL_DEST=/
+      - VIRTUAL_HOST=portal-aecheveste.sytes.net
+      - VIRTUAL_PATH=/erp
+      - VIRTUAL_DEST=/
+      - LETSENCRYPT_HOST=portal-aecheveste.sytes.net
+      - LETSENCRYPT_EMAIL=elizabeth.echeveste.c@gmail.com 
     volumes:
       - /volumes/www/erp:/usr/local/apache2/htdocs
 
@@ -40,8 +60,10 @@ services:
     #container_name: Factura
     restart: always
     environment:
-     - VIRTUAL_HOST=portal-aecheveste.sytes.net
-     - VIRTUAL_PATH=/factura
-     - VIRTUAL_DEST=/
+      - VIRTUAL_HOST=portal-aecheveste.sytes.net
+      - VIRTUAL_PATH=/factura
+      - VIRTUAL_DEST=/
+      - LETSENCRYPT_HOST=portal-aecheveste.sytes.net
+      - LETSENCRYPT_EMAIL=elizabeth.echeveste.c@gmail.com  
     volumes:
       - /volumes/www/factura:/usr/share/nginx/html:ro
